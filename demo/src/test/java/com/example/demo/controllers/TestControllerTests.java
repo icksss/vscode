@@ -106,6 +106,22 @@ public class TestControllerTests {
 
     }
 
-    
+    @DisplayName(value="Junit5 api /paramTest 테스트😭 ")
+    @Test
+    public void paramTest() throws Exception{
+        
+        RequestBuilder reqBuilder = MockMvcRequestBuilders.get("/paramTest").param("name", "TEST").param("id", "1");
+        
+        MvcResult result = mvc.perform(reqBuilder).andReturn();
+
+        MockHttpServletResponse res = result.getResponse();
+        int status = res.getStatus();
+        String resultMessage = res.getContentAsString();
+       log.debug("status : "+status);
+       log.debug("res getContentAsString: "+resultMessage);
+       assertEquals(200,status);
+       assertFalse(resultMessage.isEmpty()); 
+
+    }
 
 }

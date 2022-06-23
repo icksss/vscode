@@ -9,11 +9,14 @@ import com.example.demo.vo.test.TestVo;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
@@ -54,4 +57,22 @@ public class TestController {
 
         return ResponseEntity.status(HttpStatus.OK).body(dbTestList);
     }
+
+    @GetMapping("/paramTest")
+    public ResponseEntity<List<DbTestVo>> getParamTest(
+        @RequestParam String id,
+        @RequestParam Map<String,String> paramMap,
+        @RequestParam MultiValueMap<String,String> multiMap        
+        ){
+        
+        log.debug("this is rest api /getParamTest");
+        log.debug("id="+id);
+        log.debug("paramMap="+paramMap);
+        log.debug("multiMap="+multiMap);
+
+        List<DbTestVo> dbTestList = testService.getParamTest(paramMap);
+
+        return ResponseEntity.status(HttpStatus.OK).body(dbTestList);
+    }
+        
 }

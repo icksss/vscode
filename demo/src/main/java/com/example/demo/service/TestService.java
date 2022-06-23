@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,5 +22,9 @@ public class TestService {
 
     public List<DbTestVo> getTestData(){
         return mapper.getTestData();
+    }
+
+    public List<DbTestVo> getParamTest(Map<String,String>  paramMap){
+        return mapper.getParamTest(paramMap);
     }
 }

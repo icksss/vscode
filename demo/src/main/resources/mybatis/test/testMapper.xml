@@ -11,4 +11,14 @@
         from
             DB_TEST
     </select>
+
+    <select id="getParamTest" resultType="DbTestVo">
+        select
+            title,
+            name
+        from
+            DB_TEST
+        where 
+            name = #{name}
+    </select>
 </mapper>
